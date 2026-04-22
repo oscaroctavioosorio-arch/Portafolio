@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Encabezado from "./componentes/Encabezado";
 import Inicio from "./componentes/Inicio";
 import SobreMi from "./componentes/SobreMi";
@@ -8,37 +8,47 @@ import PiePagina from "./componentes/PiePagina";
 import SeccionDiferida from "./componentes/SeccionDiferida";
 
 function App() {
+  const [footerVisible, setFooterVisible] = useState(false);
+  const footerRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setFooterVisible(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    const footer = document.querySelector("footer");
+    if (footer) observer.observe(footer);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <>
-      {/* Enlace para saltar al contenido principal - visible sólo al navegar con teclado */}
       <a href="#inicio" className="saltar-navegacion" tabIndex="0">Saltar al contenido principal</a>
-      
+
       <Encabezado />
 
       <div className="fondo-global">
         <Inicio />
-        
+
         <SeccionDiferida umbral={0.15}>
           <SobreMi />
         </SeccionDiferida>
-        
+
         <SeccionDiferida umbral={0.15}>
           <Proyectos />
         </SeccionDiferida>
-        
+
         <SeccionDiferida umbral={0.15}>
           <Contacto />
         </SeccionDiferida>
       </div>
 
       <PiePagina />
-      
 
-      <a 
-        href="https://wa.me/573153592437" 
-        className="whatsapp-flotante" 
-        target="_blank" 
+      <a
+        href="https://wa.me/573153592437"
+        className={`whatsapp-flotante${footerVisible ? " oculto" : ""}`}
+        target="_blank"
         rel="noopener noreferrer"
         aria-label="Contactar por WhatsApp"
         role="button"
@@ -54,4 +64,3 @@ function App() {
 }
 
 export default App;
-

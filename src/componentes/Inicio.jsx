@@ -4,16 +4,7 @@ function Inicio() {
       <div className="inicio-contenido">
         <div className="inicio-texto">
           <span className="saludo">👋 Hola, soy</span>
-          <h1 className="nombre">Oscar Osorio <span className="apellidos">Osorio Oliver</span></h1>
-
-          <div className="inicio-foto">
-            <img
-              src="/oscarOsorioWeb.png"
-              alt="Oscar Osorio, Desarrollador Web"
-              className="foto-perfil"
-            />
-          </div>
-
+          <h1 className="nombre">Oscar Osorio</h1>
           <h2 className="titulo-profesional">Desarrollador <span className="highlight">Web</span></h2>
 
           <p className="descripcion">
@@ -29,9 +20,9 @@ function Inicio() {
               <span className="icono-check">✓</span>
               <span>Optimizan procesos y aumentan la productividad del equipo</span>
             </li>
-            <li className="item-sin-linea">
+            <li>
               <span className="icono-check">✓</span>
-              <div className="texto-beneficio">Ofrecen experiencias de usuario intuitivas y atractivas</div>
+              <span>Ofrecen experiencias de usuario intuitivas y atractivas</span>
             </li>
             <li>
               <span className="icono-check">✓</span>
@@ -51,6 +42,14 @@ function Inicio() {
           >
             Contáctame
           </a>
+        </div>
+
+        <div className="inicio-foto">
+          <img
+            src="/oscarOsorioWeb.png"
+            alt="Oscar Osorio, Desarrollador Web"
+            className="foto-perfil"
+          />
         </div>
       </div>
     </section>

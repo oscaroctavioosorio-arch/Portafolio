@@ -33,7 +33,7 @@ function PiePagina() {
       </div>
 
       <div className="footer-copyright">
-        <p>© {new Date().getFullYear()} | Todos los derechos reservados | Oscar Osorio Osorio Oliver</p>
+        <p>© {new Date().getFullYear()} | Todos los derechos reservados | Oscar Osorio</p>
       </div>
     </footer>
   )

@@ -94,9 +94,9 @@
 
 .footer-logo-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.8rem;
   margin-bottom: 1rem;
 }
 
@@ -233,16 +233,18 @@ h1, h2, h3 {
 }
 
 #inicio .nombre {
-  font-size: 2.4rem;
+  font-size: 3rem;
   font-weight: 800;
   margin-bottom: 0.2em;
   display: block;
-  line-height: 1.2;
+  line-height: 1.1;
 }
 #inicio .titulo-profesional {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 1.4rem;
+  font-weight: 500;
   line-height: 1.4;
+  opacity: 0.85;
+  margin-bottom: 1.5rem;
 }
 
 @media (min-width: 768px) {
@@ -293,7 +295,7 @@ h2 {
 
 .introduccion {
   margin-bottom: 2rem;
-  text-align: justify;
+  text-align: left;
 }
 .introduccion .destacado {
   display: block;
@@ -567,28 +569,46 @@ section#inicio {
 
 .inicio-contenido {
   display: flex;
-  flex-direction: column;
-  gap: 1.1rem;
+  flex-direction: column-reverse;
+  gap: 2rem;
   max-width: 92vw;
   margin: 0 auto;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .inicio-contenido {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4rem;
+  }
 }
 
 .inicio-texto {
-  max-width: 800px;
+  flex: 1;
+  max-width: 650px;
 }
 
 .inicio-foto {
   display: flex;
   justify-content: center;
-  margin: 1rem 0;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .foto-perfil {
-  max-width: 320px;
+  max-width: 300px;
   width: 100%;
   height: auto;
   border-radius: 16px;
-  box-shadow: 0 0 30px rgba(52, 152, 219, 0.4);
+  box-shadow: 0 8px 40px rgba(52, 152, 219, 0.35);
+}
+
+@media (min-width: 900px) {
+  .foto-perfil {
+    max-width: 380px;
+  }
 }
 
 .saludo {
@@ -635,7 +655,7 @@ section#inicio {
   line-height: 1.7;
   margin-bottom: 1.5rem;
   max-width: 750px;
-  text-align: justify;
+  text-align: left;
 }
 
 .destacado {
@@ -651,7 +671,7 @@ section#inicio {
   line-height: 1.6;
   margin-bottom: 1rem;
   max-width: 750px;
-  text-align: justify;
+  text-align: left;
 }
 
 .lista-beneficios {
@@ -739,22 +759,24 @@ section#inicio {
 .cta-whatsapp {
   display: inline-flex;
   align-items: center;
+  gap: 0.5rem;
   background-color: #25D366;
   color: #fff;
   font-weight: 700;
-  font-size: 1.1rem;
-  padding: 0.85rem 2rem;
-  border-radius: 30px;
+  font-size: 1.15rem;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
   text-decoration: none;
-  margin-top: 1rem;
+  margin-top: 2rem;
   transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+  letter-spacing: 0.3px;
 }
 
 .cta-whatsapp:hover {
   background-color: #128C7E;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5);
 }
 
 section h2 {
@@ -1339,6 +1361,12 @@ section h2 {
   opacity: 0.7;
 }
 
+.footer-copyright p {
+  max-width: 100%;
+  text-align: center;
+  margin: 0 auto;
+}
+
 /* Proyectos CTA */
 .proyectos-cta {
   text-align: center;
@@ -1380,6 +1408,7 @@ section h2 {
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
+  justify-content: flex-start;
 }
 
 .footer-logo {
@@ -1692,11 +1721,8 @@ footer {
 
 }
 
-/* Ocultar botón flotante de WhatsApp en móvil */
-@media (max-width: 768px) {
-  .whatsapp-flotante {
-    display: none;
-  }
+.whatsapp-flotante.oculto {
+  display: none;
 }
 
 /* Ocultar botón hamburguesa en escritorio */
