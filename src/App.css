@@ -577,6 +577,20 @@ section#inicio {
   max-width: 800px;
 }
 
+.inicio-foto {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.foto-perfil {
+  max-width: 320px;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 0 30px rgba(52, 152, 219, 0.4);
+}
+
 .saludo {
   display: inline-block;
   font-size: 1.2rem;
@@ -1099,15 +1113,21 @@ section h2 {
 
 @media (max-width: 767px) {
   .contacto-item {
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem;
   }
-  
-  .contacto-icono {
-    margin-bottom: 0.5rem;
-  }
-  
+
   .contacto-detalle {
     width: 100%;
+  }
+
+  .email-btn,
+  .telefono-btn,
+  .whatsapp-btn {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+    white-space: nowrap;
   }
 }
 
@@ -1670,6 +1690,13 @@ footer {
     text-decoration: none;
   }
 
+}
+
+/* Ocultar botón flotante de WhatsApp en móvil */
+@media (max-width: 768px) {
+  .whatsapp-flotante {
+    display: none;
+  }
 }
 
 /* Ocultar botón hamburguesa en escritorio */
