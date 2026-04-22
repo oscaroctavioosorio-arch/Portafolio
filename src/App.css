@@ -108,7 +108,7 @@
 }
 
 /* Estilos para móviles */
-@media (max-width: var(--mobile-width)) {
+@media (max-width: 480px) {
   .contenedor-principal {
     padding: 0 15px;
   }
@@ -209,11 +209,6 @@
   }
 }
 
-/* Eliminar cualquier línea vertical azul no deseada */
-*::before,
-*::after {
-  border-right: none !important;
-}
 
 html {
   scroll-behavior: smooth;
@@ -250,7 +245,7 @@ h1, h2, h3 {
   line-height: 1.4;
 }
 
-@media (min-width: var(--tablet-width)) {
+@media (min-width: 768px) {
   #inicio .nombre {
     font-size: 2.8rem;
   }
@@ -259,7 +254,7 @@ h1, h2, h3 {
   }
 }
 
-@media (min-width: var(--desktop-width)) {
+@media (min-width: 900px) {
   #inicio .nombre {
     font-size: 3.2rem;
   }
@@ -282,12 +277,12 @@ h2 {
   font-size: 2.1rem;
 }
 
-@media (min-width: var(--tablet-width)) {
+@media (min-width: 768px) {
   #sobremi h2 {
     font-size: 2.5rem;
   }
 }
-@media (min-width: var(--desktop-width)) {
+@media (min-width: 900px) {
   #sobremi h2 {
     font-size: 3rem;
   }
@@ -1883,69 +1878,3 @@ p, li, span {
   outline-offset: 2px;
 }
 
-/* Estilos para Colaboración Social Master */
-.colaboracion-social-master {
-  background-color: var(--card-bg);
-  padding: 2rem 0.5rem;
-  border-radius: var(--border-radius);
-  margin: 2rem auto;
-  max-width: 800px;
-  font-size: 1rem;
-  line-height: 1.5;
-  color: var(--text-light);
-  text-align: center;
-}
-.colaboracion-social-master a {
-  display: inline-block;
-  transform-origin: center;
-  color: var(--primary-color);
-  font-weight: bold;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  transition: transform var(--transition-speed), opacity var(--transition-speed);
-}
-.colaboracion-social-master a:hover {
-  opacity: 0.8;
-  transform: scale(1.05);
-}
-
-/* Responsive styles for Colaboración Social Master */
-@media (max-width: 480px) {
-  .colaboracion-social-master {
-    padding: 1.5rem 1rem;
-    margin: 1.5rem auto;
-    max-width: 100%;
-    font-size: 0.9rem;
-  }
-  .colaboracion-social-master p {
-    line-height: 1.4;
-  }
-}
-@media (max-width: 768px) {
-  .colaboracion-social-master {
-    padding: 2rem 1rem;
-    max-width: 90%;
-    font-size: 0.95rem;
-  }
-}
-
-/* Logo Social Master */
-.social-master-logo {
-  display: block;
-  margin: 0 auto 1rem;
-  max-width: 150px;
-  width: 100%;
-  height: auto;
-  border-radius: var(--border-radius); /* Agregado */
-}
-@media (max-width: 768px) {
-  .social-master-logo {
-    max-width: 120px;
-  }
-}
-@media (max-width: 480px) {
-  .social-master-logo {
-    max-width: 100px;
-    margin-bottom: 0.75rem;
-  }
-}
