@@ -722,6 +722,27 @@ section#inicio {
   flex-shrink: 0;
 }
 
+.cta-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  background-color: #25D366;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 0.85rem 2rem;
+  border-radius: 30px;
+  text-decoration: none;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.cta-whatsapp:hover {
+  background-color: #128C7E;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+}
+
 section h2 {
   color: var(--primary-color);
 }

@@ -33,7 +33,15 @@ function Inicio() {
               <span>Integran las últimas tecnologías y mejores prácticas de la industria</span>
             </li>
           </ul>
-          
+
+          <a
+            href="https://wa.me/573153592437"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cta-whatsapp"
+          >
+            Contáctame
+          </a>
 
         </div>
       </div>
