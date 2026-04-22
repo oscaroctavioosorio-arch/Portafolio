@@ -24,7 +24,7 @@ function Contacto() {
             </svg>
           </div>
           <div className="contacto-detalle">
-            <a href="tel:+573005466325" className="telefono-btn">+57 300 546 6325</a>
+            <a href="tel:+573153592437" className="telefono-btn">+57 315 359 2437</a>
           </div>
         </div>
         
@@ -39,7 +39,7 @@ function Contacto() {
 </svg>
 </div>
           <div className="contacto-detalle">
-            <a href="https://wa.me/573005466325" target="_blank" rel="noopener noreferrer" className="whatsapp-btn">Enviar mensaje</a>
+            <a href="https://wa.me/573153592437" target="_blank" rel="noopener noreferrer" className="whatsapp-btn">Enviar mensaje</a>
           </div>
         </div>
       </div>

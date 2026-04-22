@@ -6,8 +6,8 @@ function SobreMi() {
       <div className="sobremi-contenido">
         <div className="biografia-profesional">
           <p className="introduccion">
-  <span className="destacado">Desarrollador Full Stack apasionado</span>
-  <span className="descripcion-intro">Por crear soluciones digitales que combinan la excelencia técnica con una experiencia de usuario excepcional. Mi trayectoria profesional me ha permitido desarrollar una visión integral del desarrollo web, desde la arquitectura del backend hasta los más mínimos detalles de la interfaz.</span>
+  <span className="destacado">Desarrollador Web apasionado</span>
+  <span className="descripcion-intro">Por crear soluciones digitales que combinan la excelencia técnica con una experiencia de usuario excepcional. Mi trayectoria profesional me ha permitido desarrollar una visión integral del desarrollo web, cuidando cada detalle de la interfaz para ofrecer experiencias modernas y funcionales.</span>
 </p>
           
           <div className="filosofia-trabajo">
@@ -64,29 +64,15 @@ function SobreMi() {
                 <span className="tech-tag">CSS3/SASS</span>
                 <span className="tech-tag">JavaScript</span>
                 <span className="tech-tag">React</span>
-                <span className="tech-tag">Vue.js</span>
                 <span className="tech-tag">Responsive Design</span>
               </div>
             </div>
-            
-            <div className="grupo-tecnologia">
-              <h4>Backend</h4>
-              <div className="tecnologias-tags">
-                <span className="tech-tag">PHP</span>
-                <span className="tech-tag">Laravel</span>
-                <span className="tech-tag">CodeIgniter</span>
-                <span className="tech-tag">RESTful APIs</span>
-                <span className="tech-tag">MySQL</span>
-              </div>
-            </div>
-            
+
             <div className="grupo-tecnologia">
               <h4>DevOps & Herramientas</h4>
               <div className="tecnologias-tags">
                 <span className="tech-tag">Git/GitHub</span>
                 <span className="tech-tag">Docker</span>
-                <span className="tech-tag">CI/CD</span>
-                <span className="tech-tag">AWS</span>
               </div>
             </div>
           </div>

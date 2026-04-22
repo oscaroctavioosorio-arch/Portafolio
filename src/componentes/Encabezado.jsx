@@ -15,7 +15,7 @@ function Encabezado() {
           </div>
           <div className="nombre-sitio">
             <span className="nombre">Oscar Osorio</span>
-            <span className="profesion">Full Stack Developer</span>
+            <span className="profesion">Desarrollador Web</span>
           </div>
         </div>
         {/* Botón hamburguesa solo visible en móviles */}

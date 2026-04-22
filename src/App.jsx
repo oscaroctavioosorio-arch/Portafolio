@@ -36,7 +36,7 @@ function App() {
       
 
       <a 
-        href="https://wa.me/573005466325" 
+        href="https://wa.me/573153592437" 
         className="whatsapp-flotante" 
         target="_blank" 
         rel="noopener noreferrer"

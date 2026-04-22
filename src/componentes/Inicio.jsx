@@ -5,10 +5,10 @@ function Inicio() {
         <div className="inicio-texto">
           <span className="saludo">👋 Hola, soy</span>
           <h1 className="nombre">Oscar Osorio <span className="apellidos">Osorio Oliver</span></h1>
-          <h2 className="titulo-profesional">Desarrollador <span className="highlight">Full Stack</span></h2>
+          <h2 className="titulo-profesional">Desarrollador <span className="highlight">Web</span></h2>
           
           <p className="descripcion">
-            <span className="destacado">Transformo ideas en experiencias digitales excepcionales</span> a través de código limpio y arquitecturas sólidas. Especializado en crear soluciones modernas y a medida con <strong>React</strong>, <strong>Vue.js</strong> y <strong>Laravel</strong> que no solo se ven increíbles, sino que funcionan a la perfección.
+            <span className="destacado">Transformo ideas en experiencias digitales excepcionales</span> a través de código limpio y arquitecturas sólidas. Especializado en crear soluciones modernas y a medida con <strong>React</strong> que no solo se ven increíbles, sino que funcionan a la perfección.
           </p>
           
           <p className="descripcion-secundaria">

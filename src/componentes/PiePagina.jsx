@@ -10,7 +10,7 @@ function PiePagina() {
             </div>
             <h3>Oscar Osorio</h3>
           </div>
-          <p className="footer-descripcion">Desarrollador Full Stack especializado en crear experiencias digitales excepcionales.</p>
+          <p className="footer-descripcion">Desarrollador Web especializado en crear experiencias digitales excepcionales.</p>
         </div>
 
         <div className="footer-seccion">
@@ -26,7 +26,7 @@ function PiePagina() {
         <div className="footer-seccion">
           <h3>Contacto</h3>
           <p className="footer-contacto">oscaroctavio.osorio@gmail.com</p>
-          <p className="footer-contacto">+57 300 546 6325</p>
+          <p className="footer-contacto">+57 315 359 2437</p>
         </div>
 
 
