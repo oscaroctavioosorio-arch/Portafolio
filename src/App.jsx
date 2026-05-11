@@ -1,64 +1,175 @@
-import React, { useState, useEffect, useRef } from "react";
-import Encabezado from "./componentes/Encabezado";
-import Inicio from "./componentes/Inicio";
-import SobreMi from "./componentes/SobreMi";
-import Proyectos from "./componentes/Proyectos";
-import Contacto from "./componentes/Contacto";
-import PiePagina from "./componentes/PiePagina";
-import SeccionDiferida from "./componentes/SeccionDiferida";
+import React, { useEffect } from 'react';
+import Navbar from './componentes/Navbar';
+import Hero from './componentes/Hero';
+import StatsBar from './componentes/StatsBar';
+import About from './componentes/About';
+import Skills from './componentes/Skills';
+import Projects from './componentes/Projects';
+import Process from './componentes/Process';
+import Services from './componentes/Services';
+import Experience from './componentes/Experience';
+import Contact from './componentes/Contact';
+import Footer from './componentes/Footer';
+import WhatsAppFloat from './componentes/WhatsAppFloat';
 
 function App() {
-  const [footerVisible, setFooterVisible] = useState(false);
-  const footerRef = useRef(null);
-
+  // Particles canvas animation
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => setFooterVisible(entry.isIntersecting),
-      { threshold: 0.1 }
-    );
-    const footer = document.querySelector("footer");
-    if (footer) observer.observe(footer);
-    return () => observer.disconnect();
+    const c = document.getElementById('particles-canvas');
+    if (!c) return;
+    const ctx = c.getContext('2d');
+    let W, H, P = [], animId;
+
+    function Pt() {
+      this.x = Math.random() * W;
+      this.y = Math.random() * H;
+      this.vx = (Math.random() - .5) * .35;
+      this.vy = (Math.random() - .5) * .35;
+      this.r = Math.random() * 1.8 + .4;
+      this.o = Math.random() * .45 + .08;
+    }
+
+    function resize() { W = c.width = window.innerWidth; H = c.height = window.innerHeight; }
+
+    function init() {
+      P = [];
+      const n = Math.floor(W * H / 11000);
+      for (let i = 0; i < n; i++) P.push(new Pt());
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      P.forEach(p => {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0 || p.x > W) p.vx *= -1;
+        if (p.y < 0 || p.y > H) p.vy *= -1;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(0,212,255,${p.o})`;
+        ctx.fill();
+      });
+      for (let i = 0; i < P.length; i++) {
+        for (let j = i + 1; j < P.length; j++) {
+          const dx = P[i].x - P[j].x, dy = P[i].y - P[j].y;
+          const d = Math.sqrt(dx * dx + dy * dy);
+          if (d < 120) {
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(0,212,255,${(1 - d / 120) * .1})`;
+            ctx.lineWidth = .5;
+            ctx.moveTo(P[i].x, P[i].y);
+            ctx.lineTo(P[j].x, P[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+      animId = requestAnimationFrame(draw);
+    }
+
+    resize(); init(); draw();
+    const onResize = () => { resize(); init(); };
+    window.addEventListener('resize', onResize);
+    return () => { cancelAnimationFrame(animId); window.removeEventListener('resize', onResize); };
+  }, []);
+
+  // Reveal on scroll + skill bars + counters
+  useEffect(() => {
+    function animCount(el) {
+      if (el._done) return;
+      el._done = true;
+      const target = +el.dataset.target, suffix = el.dataset.suffix || '+';
+      let start, dur = 1800;
+      const step = ts => {
+        if (!start) start = ts;
+        const p = Math.min((ts - start) / dur, 1), ease = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.floor(ease * target) + suffix;
+        if (p < 1) requestAnimationFrame(step);
+        else el.textContent = target + suffix;
+      };
+      requestAnimationFrame(step);
+    }
+
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          e.target.querySelectorAll('.skill-bar-fill').forEach(b => {
+            setTimeout(() => { b.style.width = b.dataset.width + '%'; }, 250);
+          });
+          e.target.querySelectorAll('.stat-num').forEach(animCount);
+        }
+      });
+    }, { threshold: 0.14 });
+
+    const skillObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.querySelectorAll('.skill-bar-fill').forEach(b => {
+          setTimeout(() => { b.style.width = b.dataset.width + '%'; }, 300);
+        });
+      });
+    }, { threshold: 0.1 });
+
+    const cntObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.querySelectorAll('.stat-num').forEach(animCount);
+      });
+    }, { threshold: 0.5 });
+
+    setTimeout(() => {
+      document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+      document.querySelectorAll('.skill-category').forEach(el => skillObs.observe(el));
+      document.querySelectorAll('#stats-bar').forEach(el => cntObs.observe(el));
+    }, 100);
+
+    return () => { revealObs.disconnect(); skillObs.disconnect(); cntObs.disconnect(); };
+  }, []);
+
+  // Active nav link highlight on scroll
+  useEffect(() => {
+    const onScroll = () => {
+      const secs = document.querySelectorAll('section[id]');
+      const pos = window.scrollY + 90;
+      secs.forEach(s => {
+        if (pos >= s.offsetTop && pos < s.offsetTop + s.offsetHeight) {
+          document.querySelectorAll('.nav-links a').forEach(a => {
+            a.style.color = a.getAttribute('href') === '#' + s.id ? 'var(--cyan)' : '';
+          });
+        }
+      });
+    };
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   return (
     <>
-      <a href="#inicio" className="saltar-navegacion" tabIndex="0">Saltar al contenido principal</a>
-
-      <Encabezado />
-
-      <div className="fondo-global">
-        <Inicio />
-
-        <SeccionDiferida umbral={0.15}>
-          <SobreMi />
-        </SeccionDiferida>
-
-        <SeccionDiferida umbral={0.15}>
-          <Proyectos />
-        </SeccionDiferida>
-
-        <SeccionDiferida umbral={0.15}>
-          <Contacto />
-        </SeccionDiferida>
+      <div className="blob blob-1"></div>
+      <div className="blob blob-2"></div>
+      <div className="blob blob-3"></div>
+      <canvas id="particles-canvas"></canvas>
+      <div className="bg-code" style={{ top: '15%', left: '2%', animation: 'bg-code-drift 28s linear infinite' }}>
+        {"const developer = { name: 'Oscar Osorio', stack: ['React','CSS3'], passion: true };"}
+      </div>
+      <div className="bg-code" style={{ top: '55%', right: '2%', animation: 'bg-code-drift 35s linear infinite 8s' }}>
+        {"function buildAmazingWeb(idea) { return new Promise(resolve => resolve(idea.transform())); }"}
+      </div>
+      <div className="bg-code" style={{ top: '80%', left: '3%', animation: 'bg-code-drift 32s linear infinite 4s' }}>
+        {"import React, { useState, useEffect } from 'react'; // Clean code, always."}
       </div>
 
-      <PiePagina />
-
-      <a
-        href="https://wa.me/573153592437"
-        className={`whatsapp-flotante${footerVisible ? " oculto" : ""}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Contactar por WhatsApp"
-        role="button"
-        tabIndex="0"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 39 39">
-          <path fill="#00E676" d="M10.7 32.8l.6.3c2.5 1.5 5.3 2.2 8.1 2.2 8.8 0 16-7.2 16-16 0-4.2-1.7-8.3-4.7-11.3s-7-4.7-11.3-4.7c-8.8 0-16 7.2-15.9 16.1 0 3 .9 5.9 2.4 8.4l.4.6-1.6 5.9 6-1.5z"></path>
-          <path fill="#FFF" d="M32.4 6.4C29 2.9 24.3 1 19.5 1 9.3 1 1.1 9.3 1.2 19.4c0 3.2.9 6.3 2.4 9.1L1 38l9.7-2.5c2.7 1.5 5.7 2.2 8.7 2.2 10.1 0 18.3-8.3 18.3-18.4 0-4.9-1.9-9.5-5.3-12.9zM19.5 34.6c-2.7 0-5.4-.7-7.7-2.1l-.6-.3-5.8 1.5L6.9 28l-.4-.6c-4.4-7.1-2.3-16.5 4.9-20.9s16.5-2.3 20.9 4.9 2.3 16.5-4.9 20.9c-2.3 1.5-5.1 2.3-7.9 2.3zm8.8-11.1l-1.1-.5s-1.6-.7-2.6-1.2c-.1 0-.2-.1-.3-.1-.3 0-.5.1-.7.2 0 0-.1.1-1.5 1.7-.1.2-.3.3-.5.3h-.1c-.1 0-.3-.1-.4-.2l-.5-.2c-1.1-.5-2.1-1.1-2.9-1.9-.2-.2-.5-.4-.7-.6-.7-.7-1.4-1.5-1.9-2.4l-.1-.2c-.1-.1-.1-.2-.2-.4 0-.2 0-.4.1-.5 0 0 .4-.5.7-.8.2-.2.3-.5.5-.7.2-.3.3-.7.2-1-.1-.5-1.3-3.2-1.6-3.8-.2-.3-.4-.4-.7-.5h-1.1c-.2 0-.4.1-.6.1l-.1.1c-.2.1-.4.3-.6.4-.2.2-.3.4-.5.6-.7.9-1.1 2-1.1 3.1 0 .8.2 1.6.5 2.3l.1.3c.9 1.9 2.1 3.6 3.7 5.1l.4.4c.3.3.6.5.8.8 2.1 1.8 4.5 3.1 7.2 3.8.3.1.7.1 1 .2h1c.5 0 1.1-.2 1.5-.4.3-.2.5-.2.7-.4l.2-.2c.2-.2.4-.3.6-.5.2-.2.4-.4.5-.6.2-.4.3-.9.4-1.4v-.7s-.1-.1-.3-.2z"></path>
-        </svg>
-      </a>
+      <Navbar />
+      <main>
+        <Hero />
+        <StatsBar />
+        <About />
+        <Skills />
+        <Projects />
+        <Process />
+        <Services />
+        <Experience />
+        <Contact />
+      </main>
+      <Footer />
+      <WhatsAppFloat />
     </>
   );
 }
