@@ -11,12 +11,14 @@ export default function Footer() {
               <span className="nav-logo-text">Oscar <span>Osorio</span></span>
             </a>
             <p>Desarrollador Web especializado en crear experiencias digitales excepcionales con React y el ecosistema JavaScript moderno.</p>
+            {/* Redes sociales — descomentar cuando estén listos los perfiles
             <div className="footer-socials">
               <a href="https://github.com/oscaroctavioosorio-arch" target="_blank" rel="noopener noreferrer" className="footer-social"><i className="fab fa-github"></i></a>
               <a href="https://linkedin.com/in/oscar-osorio" target="_blank" rel="noopener noreferrer" className="footer-social"><i className="fab fa-linkedin-in"></i></a>
               <a href="https://wa.me/573153592437" target="_blank" rel="noopener noreferrer" className="footer-social"><i className="fab fa-whatsapp"></i></a>
               <a href="mailto:oscaroctavio.osorio@gmail.com" className="footer-social"><i className="fas fa-envelope"></i></a>
             </div>
+            */}
           </div>
           <div className="footer-col">
             <h4>Navegación</h4>

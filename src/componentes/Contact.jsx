@@ -29,6 +29,14 @@ export default function Contact() {
             <p style={{ color: 'var(--text-2)', lineHeight: '1.8', marginBottom: '36px' }}>
               Tienes un proyecto en mente o quieres explorar posibilidades — estoy aquí. Respondo en menos de 24 horas.
             </p>
+            {/* Redes sociales — descomentar cuando estén listos los perfiles
+            <div className="contact-socials">
+              <a href="https://github.com/oscaroctavioosorio-arch" target="_blank" rel="noopener noreferrer" className="cs-btn"><i className="fab fa-github"></i></a>
+              <a href="https://linkedin.com/in/oscar-osorio" target="_blank" rel="noopener noreferrer" className="cs-btn"><i className="fab fa-linkedin-in"></i></a>
+              <a href="https://wa.me/573153592437" target="_blank" rel="noopener noreferrer" className="cs-btn"><i className="fab fa-whatsapp"></i></a>
+              <a href="mailto:oscaroctavio.osorio@gmail.com" className="cs-btn"><i className="fas fa-envelope"></i></a>
+            </div>
+            */}
             <div className="contact-items">
               <div className="contact-item">
                 <div className="ci-icon"><i className="fas fa-envelope"></i></div>
@@ -49,12 +57,6 @@ export default function Contact() {
                 <div className="ci-text"><strong>Estado</strong><span style={{ color: 'var(--green)' }}>✓ Disponible para proyectos</span></div>
               </div>
             </div>
-            <div className="contact-socials">
-              <a href="https://github.com/oscaroctavioosorio-arch" target="_blank" rel="noopener noreferrer" className="cs-btn"><i className="fab fa-github"></i></a>
-              <a href="https://linkedin.com/in/oscar-osorio" target="_blank" rel="noopener noreferrer" className="cs-btn"><i className="fab fa-linkedin-in"></i></a>
-              <a href="https://wa.me/573153592437" target="_blank" rel="noopener noreferrer" className="cs-btn"><i className="fab fa-whatsapp"></i></a>
-              <a href="mailto:oscaroctavio.osorio@gmail.com" className="cs-btn"><i className="fas fa-envelope"></i></a>
-            </div>
           </div>
 
           <div className="reveal" style={{ transitionDelay: '.15s' }}>
@@ -64,16 +66,22 @@ export default function Contact() {
                 <div className="form-row">
                   <div className="form-group">
                     <label>Nombre *</label>
-                    <input type="text" placeholder="Tu nombre" required />
+                    <input type="text" placeholder="Tu nombre" required
+                      onInvalid={e => e.target.setCustomValidity('Por favor ingresa tu nombre')}
+                      onInput={e => e.target.setCustomValidity('')} />
                   </div>
                   <div className="form-group">
                     <label>Email *</label>
-                    <input type="email" placeholder="tu@email.com" required />
+                    <input type="email" placeholder="tu@email.com" required
+                      onInvalid={e => e.target.setCustomValidity(e.target.validity.valueMissing ? 'Por favor ingresa tu correo' : 'Ingresa un correo electrónico válido')}
+                      onInput={e => { e.target.setCustomValidity(''); if (e.target.validity.valueMissing) e.target.setCustomValidity('Por favor ingresa tu correo'); else if (e.target.validity.typeMismatch) e.target.setCustomValidity('Ingresa un correo electrónico válido'); }} />
                   </div>
                 </div>
                 <div className="form-group">
-                  <label>Tipo de proyecto</label>
-                  <select>
+                  <label>Tipo de proyecto *</label>
+                  <select required
+                    onInvalid={e => e.target.setCustomValidity('Por favor selecciona un tipo de proyecto')}
+                    onChange={e => e.target.setCustomValidity('')}>
                     <option value="">Selecciona...</option>
                     <option>Landing Page / Portafolio</option>
                     <option>Tienda Online / E-commerce</option>
@@ -83,8 +91,10 @@ export default function Contact() {
                   </select>
                 </div>
                 <div className="form-group">
-                  <label>Presupuesto</label>
-                  <select>
+                  <label>Presupuesto *</label>
+                  <select required
+                    onInvalid={e => e.target.setCustomValidity('Por favor selecciona un rango de presupuesto')}
+                    onChange={e => e.target.setCustomValidity('')}>
                     <option value="">Selecciona un rango...</option>
                     <option>$200 - $500 USD</option>
                     <option>$500 - $1,500 USD</option>
@@ -94,7 +104,9 @@ export default function Contact() {
                 </div>
                 <div className="form-group">
                   <label>Mensaje *</label>
-                  <textarea placeholder="Cuéntame sobre tu proyecto..." required></textarea>
+                  <textarea placeholder="Cuéntame sobre tu proyecto..." required
+                    onInvalid={e => e.target.setCustomValidity('Por favor escribe tu mensaje')}
+                    onInput={e => e.target.setCustomValidity('')}></textarea>
                 </div>
                 <button type="submit" className="btn btn-primary form-submit">
                   <i className="fas fa-paper-plane"></i> Enviar mensaje

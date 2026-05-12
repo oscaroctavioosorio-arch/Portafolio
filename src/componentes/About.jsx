@@ -32,7 +32,7 @@ export default function About() {
               Especializado en <strong style={{ color: 'var(--cyan)' }}>React</strong> y el ecosistema JavaScript moderno. Construyo aplicaciones que no solo lucen impresionantes — resuelven problemas reales y generan resultados tangibles.
             </p>
             <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', marginBottom: '34px' }}>
-              <a href="mailto:oscaroctavio.osorio@gmail.com" className="btn btn-primary">
+              <a href="/cv-oscar-osorio.pdf" download className="btn btn-primary">
                 <i className="fas fa-download"></i> Descargar CV
               </a>
               <a href="#contact" className="btn btn-outline">
