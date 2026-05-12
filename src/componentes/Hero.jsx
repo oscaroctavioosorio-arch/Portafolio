@@ -65,12 +65,14 @@ export default function Hero() {
               <a href="#projects" className="btn btn-primary"><i className="fas fa-rocket"></i> Ver proyectos</a>
               <a href="#contact" className="btn btn-outline"><i className="fas fa-comment-dots"></i> Hablemos</a>
             </div>
+            {/* Redes sociales — descomentar cuando estén listos los perfiles
             <div className="hero-socials">
               <a href="https://github.com/oscaroctavioosorio-arch" target="_blank" rel="noopener noreferrer"><i className="fab fa-github"></i></a>
               <a href="https://linkedin.com/in/oscar-osorio" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin-in"></i></a>
               <a href="https://wa.me/573153592437" target="_blank" rel="noopener noreferrer"><i className="fab fa-whatsapp"></i></a>
               <a href="mailto:oscaroctavio.osorio@gmail.com"><i className="fas fa-envelope"></i></a>
             </div>
+            */}
           </div>
 
           <div className="hero-photo-wrap">
